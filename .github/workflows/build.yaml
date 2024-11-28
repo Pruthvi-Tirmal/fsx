@@ -24,6 +24,7 @@ jobs:
           retention-days: 0
   deploy:
     name: Deploy to Vercel
+    needs: build
     runs-on: macos-latest
     steps:
       - name: Checkout Code
