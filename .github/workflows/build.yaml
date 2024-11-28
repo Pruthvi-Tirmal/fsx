@@ -16,6 +16,9 @@ jobs:
         run: npm i
       - name: Build Code
         run: npm run build
+      - name: Verify Build Output
+        run: |
+          ls -la .next || echo ".next directory not found!"
       - name: Upload Build Artifacts
         uses: actions/upload-artifact@v4
         with:
