@@ -21,7 +21,9 @@ jobs:
         with:
           name: build-artifact
           path: ./.next
+          if-no-files-found: error
           retention-days: 0
+          include-hidden-files: true
   deploy:
     name: Deploy to Vercel
     needs: build
