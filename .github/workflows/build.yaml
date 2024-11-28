@@ -38,6 +38,8 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: build-artifact
+      - name: Move Downloaded Files
+        run: mv build-artifact .next
       - name: List .next Contents
         run: ls -la .next
       - name: Deploy
