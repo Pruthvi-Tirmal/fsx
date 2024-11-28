@@ -40,6 +40,8 @@ jobs:
           name: build-artifact
       - name: List Github Contents
         run: ls -la $GITHUB_WORKSPACE
+      - name: Move .next Inside Artifact Folder
+        run: mv $GITHUB_WORKSPACE/build-artifact $GITHUB_WORKSPACE/.next
       - name: Deploy
         env:
           VERCEL_TOKEN: ${{secrets.VERCEL_TOKEN}}
