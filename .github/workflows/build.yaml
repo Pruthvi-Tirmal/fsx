@@ -35,6 +35,8 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: build-artifact
+      - name: List Downloaded Artifacts
+        run: ls -la ./build-artifact
       - name: Deploy
         env:
           VERCEL_TOKEN: ${{secrets.VERCEL_TOKEN}}
