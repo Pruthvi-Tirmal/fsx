@@ -18,7 +18,9 @@ const Navbar = () => {
       } else setScrolled(() => true);
     });
 
-    () => window.removeEventListener("scroll", () => {});
+    return () => {
+      window.removeEventListener("scroll", () => {});
+    };
   }, []);
 
   const handleMenu = () => {
