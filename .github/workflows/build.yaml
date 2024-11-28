@@ -1,0 +1,40 @@
+name: "Build and Deploy"
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    name: Build Code
+    runs-on: macos-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+      - name: Install Dependencies
+        run: npm i
+      - name: Build Code
+        run: npm run build
+      - name: Upload Build Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-artifact
+          path: ./build
+          retention-days: 0
+  deploy:
+    name: Deploy to Vercel
+    runs-on: macos-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+      - name: Download Artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: build-artifact
+      - name: Deploy
+        env:
+          VERCEL_TOKEN: ${{secrets.VERCEL_TOKEN}}
+        run: |
+          npm i -g vercel
+          vercel --prod --yes --token $VERCEL_TOKEN
