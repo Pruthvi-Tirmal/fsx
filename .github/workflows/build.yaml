@@ -12,8 +12,6 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
-      - name: Install Dependencies
-        run: npm i
       - name: Vercel Build
         env:
           VERCEL_TOKEN: ${{secrets.VERCEL_TOKEN}}
@@ -43,6 +41,8 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
+      - name: Install Dependencies
+        run: npm install
       - name: Download Local Artifact
         uses: actions/download-artifact@v4
         with:
