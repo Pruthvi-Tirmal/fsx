@@ -23,7 +23,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: build-artifact
-          path: .next
+          path: .next/**
           if-no-files-found: error
           retention-days: 1
           include-hidden-files: true
@@ -38,10 +38,9 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: build-artifact
+          path: .next
       - name: List Github Contents
-        run: ls -la $GITHUB_WORKSPACE
-      - name: Move .next Inside Artifact Folder
-        run: mv $GITHUB_WORKSPACE/build-artifact $GITHUB_WORKSPACE/.next
+        run: ls -la .next
       - name: Deploy
         env:
           VERCEL_TOKEN: ${{secrets.VERCEL_TOKEN}}
