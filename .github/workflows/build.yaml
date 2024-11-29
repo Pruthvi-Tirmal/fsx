@@ -38,9 +38,11 @@ jobs:
           path: .next
       - name: List of Github content
         run: ls -la $GITHUB_WORKSPACE
+      - name: Current working directory
+        run: pwd
       - name: Deploy
         env:
           VERCEL_TOKEN: ${{secrets.VERCEL_TOKEN}}
         run: |
           npm i -g vercel
-          vercel --cwd . --prod --yes --token $VERCEL_TOKEN
+          vercel --prod --yes --token $VERCEL_TOKEN
