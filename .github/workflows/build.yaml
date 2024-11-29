@@ -40,6 +40,8 @@ jobs:
         with:
           name: build-artifact
           path: .vercel
+      - name: List of Files
+        run: ls -la
       - name: Deploy
         env:
           VERCEL_TOKEN: ${{secrets.VERCEL_TOKEN}}
