@@ -14,7 +14,9 @@ jobs:
         uses: actions/checkout@v4
       - name: Install Dependencies
         run: npm i
-      - name: Build Code
+      - name: Local Build
+        run: npm run build
+      - name: Vercel Build
         env:
           VERCEL_TOKEN: ${{secrets.VERCEL_TOKEN}}
         run: |
