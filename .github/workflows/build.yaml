@@ -16,14 +16,11 @@ jobs:
         run: npm i
       - name: Build Code
         run: npm run build
-      - name: Verify Build Output
-        run: |
-          ls -la .next || echo ".next directory not found!"
       - name: Upload Build Artifacts
         uses: actions/upload-artifact@v4
         with:
           name: build-artifact
-          path: .next/**
+          path: .next
           if-no-files-found: error
           retention-days: 1
           include-hidden-files: true
@@ -39,8 +36,8 @@ jobs:
         with:
           name: build-artifact
           path: .next
-      - name: List Github Contents
-        run: ls -la .next
+      - name: List of Github content
+        run: ls -la $GITHUB_WORKSPACE
       - name: Deploy
         env:
           VERCEL_TOKEN: ${{secrets.VERCEL_TOKEN}}
