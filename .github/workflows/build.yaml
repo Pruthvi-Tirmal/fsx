@@ -39,7 +39,7 @@ jobs:
       - name: List of Github content
         run: ls -la $GITHUB_WORKSPACE
       - name: Current working directory
-        run: pwd
+        run: pwd && ls -la
       - name: Deploy
         env:
           VERCEL_TOKEN: ${{secrets.VERCEL_TOKEN}}
