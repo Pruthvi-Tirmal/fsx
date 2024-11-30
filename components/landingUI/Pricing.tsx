@@ -23,7 +23,7 @@ const Pricing = () => {
         Features. No hidden charges.
       </h3>
       {/* pricing card */}
-      <div className="grid  mx-auto place-content-center gap-6 grid-cols-[repeat(auto-fit,350px)] sm:grid-cols-[repeat(auto-fit,400px)]  mt-8">
+      <div className="grid  mx-auto place-content-center gap-6 sm:grid-cols-[repeat(auto-fit,350px)] grid-cols-[repeat(auto-fit,_minmax(300px,_1fr)]  mt-8">
         {pricing.map((price) => (
           <article
             key={price.model}

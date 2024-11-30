@@ -8,8 +8,8 @@ const PasswordFeature = () => {
     <section className="py-10  bg-[linear-gradient(45deg,white,#fafafa)] required-padding">
       <div className="grid gap-10 md:gap-6 justify-content-between lg:grid-cols-[repeat(auto-fit,_minmax(450px,_1fr))] md:grid-cols-[repeat(auto-fit,_minmax(400px,_1fr))] sm:grid-cols-[repeat(auto-fit,_minmax(350px,_1fr))] grid-cols-[repeat(auto-fit,_minmax(300px,_1fr))] ">
         <div className="flex flex-col justify-center order-2 space-y-6 text-center ">
-          <h1 className="text-4xl font-semibold text-gray-800">
-            No QR? No Problem!
+          <h1 className="flex flex-wrap items-center justify-center gap-3 text-4xl font-semibold text-gray-800">
+            <span>No QR?</span> <span>No Problem!</span>
           </h1>
           <p className="text-xl font-medium text-gray-500">
             <Balancer>
