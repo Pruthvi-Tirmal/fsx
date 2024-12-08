@@ -24,11 +24,7 @@ const AnimateText = ({ alertText }: AnimateTextProps) => {
     if (alertText === "callbackURL") {
       return "Please Sign In to Continue!";
     } else if (alertText === "error") {
-      return (
-        <>
-          Sign In was canceled. <br /> Please try again!{" "}
-        </>
-      );
+      return "Sign In was canceled. \n Please try again!";
     } else return "Access to fsX";
   };
   return (
@@ -44,7 +40,7 @@ const AnimateText = ({ alertText }: AnimateTextProps) => {
         </motion.span>
       )}
       {!startAnimation && (
-        <span className="text-2xl font-bolder text-gray-700">
+        <span className="text-2xl whitespace-pre-line font-bolder text-gray-700">
           {handleAlertText()}
         </span>
       )}
