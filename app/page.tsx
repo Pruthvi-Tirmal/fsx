@@ -11,10 +11,10 @@ import DialogWrapper from "@/components/wrapper/DialogWrapper";
 import React from "react";
 
 interface HomePageProps {
-  searchParams: {
+  searchParams: Promise<{
     callbackurl?: string;
     error?: string;
-  };
+  }>;
 }
 
 const HomePage = async ({ searchParams }: HomePageProps) => {
