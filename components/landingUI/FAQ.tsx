@@ -15,7 +15,7 @@ const FAQ = () => {
       <h1 className="text-4xl font-semibold text-center text-gray-800">
         Questions & Answers
       </h1>
-      <div className="flex items-center mx-5 sm:mx-10 lg:mx-20 flex-column">
+      <div className="flex items-center  sm:mx-5 lg:mx-20 flex-column">
         <Accordion className="w-full" type="single" collapsible>
           {faqList.map((item) => (
             <AccordionItem key={item.id} value={item.question}>

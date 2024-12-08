@@ -8,7 +8,9 @@ import { cn } from "@/lib/utils";
 import { LuMenu } from "react-icons/lu";
 import { HiOutlineX } from "react-icons/hi";
 import { motion } from "motion/react";
+import useDialogState from "@/states/DialogState";
 const Navbar = () => {
+  const { setOpen } = useDialogState();
   const [scrolled, setScrolled] = useState<boolean>(false);
   const [openMenu, setOpenMenu] = useState<boolean>(false);
   useEffect(() => {
@@ -30,7 +32,7 @@ const Navbar = () => {
   return (
     <nav
       className={cn(
-        "sticky top-0 z-10 grid w-full bg-white/60 grid-cols-2 md:grid-cols-3 required-padding py-2",
+        "sticky top-0 z-10 grid w-full bg-white/60 grid-cols-2 items-center md:grid-cols-3 required-padding py-2",
         {
           "border-b bg-white/95": scrolled,
         }
@@ -40,6 +42,9 @@ const Navbar = () => {
         <h1 className="text-3xl font-semibold text-gray-700 sm:text-4xl">
           fsX
         </h1>
+        <span className="text-lg px-2 py-1 rounded-lg bg-gray-800 text-white font-bold">
+          Beta
+        </span>
       </Link>
       <div className="items-center justify-center hidden space-x-3 text-lg font-medium text-gray-700 capitalize md:flex">
         <Link href={"#pricing"}>Pricing</Link>
@@ -47,7 +52,9 @@ const Navbar = () => {
         <Link href={"#faq"}>FAQ</Link>
       </div>
       <div className="ml-auto">
-        <Button className="hidden md:inline-flex">Sign In</Button>
+        <Button className="hidden md:inline-flex" onClick={() => setOpen(true)}>
+          Sign In
+        </Button>
         <Button size={"icon"} onClick={handleMenu} className="md:hidden">
           {openMenu ? <HiOutlineX /> : <LuMenu />}
         </Button>
@@ -67,7 +74,9 @@ const Navbar = () => {
           <Link className="px-4 py-2 border-b" href={"#faq"}>
             FAQ
           </Link>
-          <Button size={"lg"}>Sign In</Button>
+          <Button size={"lg"} onClick={() => setOpen(true)}>
+            Sign In
+          </Button>
         </motion.section>
       )}
     </nav>

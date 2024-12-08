@@ -14,8 +14,8 @@ const Footer = () => {
         </p>
         <a
           href="https://x.com/Pruthvix7"
-          className="font-medium text-center lg:text-right md:text-base sm:hover:underline decoration-wavy text-muted-foreground">
-          <span className="hidden lg:inline-flex">
+          className="font-medium text-center underline-offset-8 lg:text-right md:text-base sm:hover:underline decoration-wavy text-muted-foreground">
+          <span className="hidden lg:inline">
             Design & Developed by Phoenix
           </span>{" "}
           <span className="text-xl">⚡️</span>

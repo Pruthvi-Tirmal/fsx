@@ -1,0 +1,11 @@
+import NextAuth from "next-auth";
+import Google from "next-auth/providers/google";
+import Github from "next-auth/providers/github";
+export const { handlers, signIn, signOut, auth } = NextAuth({
+  providers: [Google, Github],
+  pages: {
+    signOut: "/",
+    signIn: "/",
+    error: "/", // for now we are keeping this we will change this.
+  },
+});

@@ -21,7 +21,7 @@ const HeroSection = () => {
             size={"xl"}
             className="text-base font-medium"
             variant={"outline"}>
-            <span>Sign In</span>
+            <span>Try fsX Now</span>
             <ArrowRight />
           </Button>
           <Button className="text-base font-semibold" size={"xl"}>
