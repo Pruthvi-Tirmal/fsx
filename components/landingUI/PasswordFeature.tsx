@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "../ui/button";
-import ImageComponent from "../ImageComponent";
+import ImageComponent from "../common/ImageComponent";
 import mockup from "@/public/images/mockup-content-hero.png";
 import Balancer from "react-wrap-balancer";
 const PasswordFeature = () => {

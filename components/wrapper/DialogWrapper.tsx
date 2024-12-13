@@ -1,15 +1,18 @@
 "use client";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { cn } from "@/lib/utils";
 import useDialogState from "@/states/DialogState";
 import { useRouter } from "next/navigation";
 
 interface DialogWrapperProps {
   children: React.ReactNode;
   openDialog?: boolean;
+  customStyle?: string;
 }
 const DialogWrapper = ({
   children,
   openDialog = false,
+  customStyle = "",
 }: DialogWrapperProps) => {
   const { open, setOpen } = useDialogState();
   const router = useRouter();
@@ -26,7 +29,10 @@ const DialogWrapper = ({
         onInteractOutside={(event) => {
           if (openDialog) event.preventDefault();
         }}
-        className="flex flex-col items-center justify-center max-w-[350px] sm:max-w-[425px]">
+        className={cn(
+          "flex flex-col items-center justify-center max-w-[350px] sm:max-w-[425px]",
+          customStyle
+        )}>
         {children}
       </DialogContent>
     </Dialog>

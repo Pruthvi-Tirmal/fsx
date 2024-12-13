@@ -1,7 +1,7 @@
 "use client";
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "motion/react";
-import ImageComponent from "../ImageComponent";
+import ImageComponent from "../common/ImageComponent";
 import mockupImage from "@/public/images/mockup-content-hero.png";
 const Mockup = () => {
   const containerRef = useRef(null);

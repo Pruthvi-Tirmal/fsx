@@ -1,7 +1,7 @@
 import React from "react";
 import { Button } from "../ui/button";
 import { Balancer } from "react-wrap-balancer";
-import { ArrowRight, Rocket } from "lucide-react";
+import { ArrowRight, Crown } from "lucide-react";
 import { Badge } from "../ui/badge";
 const HeroSection = () => {
   return (
@@ -26,7 +26,7 @@ const HeroSection = () => {
           </Button>
           <Button className="text-base font-semibold" size={"xl"}>
             Become Pro
-            <Rocket />
+            <Crown />
           </Button>
         </div>
       </div>

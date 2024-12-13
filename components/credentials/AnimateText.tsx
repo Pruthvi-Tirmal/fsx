@@ -10,7 +10,7 @@ const AnimateText = ({ alertText }: AnimateTextProps) => {
   const [text, setText] = useState<string>();
   const [startAnimation, setStartAnimation] = useState<boolean>(false);
   useEffect(() => {
-    if (!alert) {
+    if (!alertText) {
       const clear = setInterval(() => {
         setText(() => list[Math.floor(Math.random() * MAX) % list.length]);
         setStartAnimation(() => true);

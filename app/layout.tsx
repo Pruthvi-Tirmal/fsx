@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import Navbar from "@/components/landingUI/Navbar";
 import { TooltipProvider } from "@/components/ui/tooltip";
 
 const geistSans = localFont({
@@ -20,7 +19,7 @@ export const metadata: Metadata = {
   description: "Effortless File Transfers, Anywhere, Anytime.",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
@@ -29,12 +28,8 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-hero-pattern `}>
-        {/* <div className="absolute w-full h-full "></div> */}
         <div className="mx-w-[1440px]">
-          <TooltipProvider>
-            <Navbar />
-            {children}
-          </TooltipProvider>
+          <TooltipProvider>{children}</TooltipProvider>
         </div>
       </body>
     </html>

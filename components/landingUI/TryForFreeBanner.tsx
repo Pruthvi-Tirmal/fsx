@@ -1,5 +1,5 @@
 import React from "react";
-import ImageComponent from "../ImageComponent";
+import ImageComponent from "../common/ImageComponent";
 import logo from "@/public/images/logo.png";
 import { Button } from "../ui/button";
 import { Rocket } from "lucide-react";
