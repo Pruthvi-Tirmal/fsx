@@ -20,7 +20,7 @@ const Sidebar = ({ openSideBar }: SidebarProps) => {
           : { width: "0px", opacity: 0 }
       }
       transition={{ duration: 0.3, ease: "easeOut" }}
-      className="border-r-2 whitespace-nowrap overflow-y-auto mt-0 absolute border-t px-2 py-3 bg-white bg-opacity-65 required-h-screen top-0 left-0 z-10 ">
+      className="border-r-2 whitespace-nowrap overflow-y-auto mt-0 absolute border-t px-2 py-3 bg-white bg-opacity-65 h-full top-0 left-0 z-10 ">
       <div className="flex items-center justify-between">
         <h2 className="font-bold text-gray-800 text-2xl">File History</h2>
       </div>

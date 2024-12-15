@@ -14,7 +14,7 @@ body {
 }
 
 .required-h-screen {
-  @apply h-[calc(100vh-66px)];
+  @apply min-h-[calc(100vh-66px)];
 }
 
 @layer base {

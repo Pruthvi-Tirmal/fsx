@@ -15,12 +15,11 @@ const InfoStatusBar = ({ setOpenSideBar, openSideBar }: InfoStatusBarProps) => {
   const { setOpen } = useDialogState();
   return (
     <div className="relative">
-      <button className="absolute transform scale-100 active:scale-90 transition-transform duration-75 ease-linear  cursor-pointer top-0">
-        <LuPanelLeft
-          onClick={() => setOpenSideBar(!openSideBar)}
-          className="w-8 h-8 relative"
-        />
-        <span className="animate-ping absolute inline-flex h-[10px] w-[10px] top-0 right-0 rounded-full bg-sky-500"></span>
+      <button
+        onClick={() => setOpenSideBar(!openSideBar)}
+        className="absolute transform scale-100 active:scale-90 transition-transform duration-75 ease-linear cursor-pointer top-0">
+        <LuPanelLeft className="w-8 h-8 relative" />
+        <span className="animate-ping absolute inline-flex h-[10px] w-[10px] top-0 right-0 rounded-full bg-gray-800"></span>
       </button>
 
       {/* Tips */}

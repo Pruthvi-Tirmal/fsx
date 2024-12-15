@@ -6,7 +6,7 @@ import CoreContainer from "./CoreContainer";
 const Panel = () => {
   const [openSideBar, setOpenSideBar] = useState(false);
   return (
-    <section className="relative flex h-full w-full border">
+    <section className="relative flex h-full w-full ">
       <Sidebar openSideBar={openSideBar} />
       <CoreContainer
         openSideBar={openSideBar}
