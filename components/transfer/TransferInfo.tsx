@@ -31,7 +31,10 @@ const TransferInfo = ({ setIsGenerated }: TransferInfoProps) => {
         <Field label="Do you want to password protect?" isCheckbox checked />
         <Field label="Do you want to track analytics?" isCheckbox checked />
       </div>
-      <Button size={"lg"} onClick={() => setIsGenerated(false)}>
+      <Button
+        size={"lg"}
+        className="w-full sm:w-[40%]"
+        onClick={() => setIsGenerated(false)}>
         <MoveLeft />
         Back
       </Button>

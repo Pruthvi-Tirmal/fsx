@@ -13,16 +13,21 @@ import {
 
 const TransferNavbar = () => {
   return (
-    <div className="col-span-2 justify-self-end flex space-x-9 items-center">
+    <div className="justify-self-end flex space-x-3 sm:space-x-9 items-center">
       {/* Unlock pro if not */}
-      <Button className="text-base font-semibold" size={"xl"}>
+      {/* for bigger screen than mobile */}
+      <Button className="sm:flex hidden text-base font-semibold" size={"xl"}>
         Become Pro
+        <Crown />
+      </Button>
+      {/* for mobile screen */}
+      <Button className="sm:hidden flex-inline" size={"icon"}>
         <Crown />
       </Button>
       {/* avatar */}
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <div className="border p-[1px] ring-2 transform active:scale-95 cursor-pointer active:ring-1 transition-all duration-75 ease-linear ring-gray-500 rounded-full">
+          <div className="p-[1px] ring-2 transform active:scale-95 cursor-pointer active:ring-1 transition-all duration-75 ease-linear ring-gray-500 rounded-full">
             <Avatar>
               <AvatarImage src="https://github.com/shadcn.png" />
               <AvatarFallback>CN</AvatarFallback>

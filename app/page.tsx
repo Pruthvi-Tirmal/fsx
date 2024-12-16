@@ -43,7 +43,7 @@ const HomePage = async ({ searchParams }: HomePageProps) => {
       <PasswordFeature />
       <FAQ />
       <TryForFreeBanner />
-      <Footer />
+      {/* <Footer /> */}
       <DialogWrapper openDialog={!!callbackurl || !!error}>
         <SignIn alertCode={alertStatus()} />
       </DialogWrapper>

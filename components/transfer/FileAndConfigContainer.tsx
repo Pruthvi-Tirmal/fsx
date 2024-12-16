@@ -11,7 +11,7 @@ const FileAndConfigContainer = () => {
   const [isGenerated, setIsGenerated] = useState(false);
   const form = useForm();
   return (
-    <main className="my-10 grid grid-cols-2 gap-2 bg-white border p-2 rounded-lg min-h-[500px]">
+    <main className="my-10 grid lg:grid-cols-2 grid-cols-1 gap-2 bg-white border p-2 rounded-lg min-h-[500px]">
       {/* 1st screen to upload files */}
       {!isGenerated ? (
         <Form {...form}>
@@ -44,7 +44,7 @@ const PreferencesPanel = ({
   isGenerated,
 }: PreferencesPanelProps) => {
   return (
-    <div className="p-2 relative space-y-3 ">
+    <div className="sm:px-2 py-2 relative space-y-3 ">
       <h1 className="text-2xl flex items-center space-x-2 font-semibold">
         {isGenerated ? <Pin /> : <Shapes />} <span>{title}</span>{" "}
       </h1>

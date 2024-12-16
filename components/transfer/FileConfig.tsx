@@ -12,6 +12,7 @@ import { Label } from "@/components/ui/label";
 import { FieldValues, UseFormReturn } from "react-hook-form";
 import FormFieldWrapper from "../wrapper/FormFieldWrapper";
 import { Button } from "../ui/button";
+import { RotateCcw, Dices } from "lucide-react";
 
 interface FileConfigProps {
   form: UseFormReturn<FieldValues, undefined>;
@@ -45,7 +46,7 @@ const FileConfig = ({ form, setIsGenerated }: FileConfigProps) => {
             </Select>
           </FormFieldWrapper>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex flex-wrap items-center gap-2">
           {/* file scheduler */}
           <FormFieldWrapper
             control={form.control}
@@ -67,7 +68,7 @@ const FileConfig = ({ form, setIsGenerated }: FileConfigProps) => {
             </div>
           </FormFieldWrapper>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex flex-wrap items-center gap-2">
           <FormFieldWrapper control={form.control} formName="sendEmail">
             <div className="flex space-x-2 items-center">
               <Checkbox id="email" />
@@ -94,7 +95,7 @@ const FileConfig = ({ form, setIsGenerated }: FileConfigProps) => {
           </FormFieldWrapper>
         </div>
         {/* url expiry */}
-        <div className="flex gap-2 items-center">
+        <div className="flex flex-wrap gap-2 items-center">
           <FormFieldWrapper
             control={form.control}
             formName="urlLink"
@@ -114,7 +115,7 @@ const FileConfig = ({ form, setIsGenerated }: FileConfigProps) => {
             </div>
           </FormFieldWrapper>
         </div>
-        <div className="flex gap-2 items-center">
+        <div className="flex flex-wrap gap-2 items-center">
           {/* password protection */}
           <FormFieldWrapper
             formDescription="protect file with password"
@@ -141,11 +142,16 @@ const FileConfig = ({ form, setIsGenerated }: FileConfigProps) => {
           </FormFieldWrapper>
         </div>
       </section>
-      <div className="flex w-full p-2 justify-center bg-white items-center gap-5  ">
-        <Button size={"lg"} onClick={() => setIsGenerated(true)}>
+      <div className="flex w-full p-2 justify-center bg-white items-center gap-2 sm:gap-5">
+        <Button
+          size={"lg"}
+          className="w-full sm:w-[40%]"
+          onClick={() => setIsGenerated(true)}>
+          <Dices />
           Generate
         </Button>
-        <Button size={"lg"} variant={"secondary"}>
+        <Button size={"lg"} className="w-full sm:w-[40%]" variant={"secondary"}>
+          <RotateCcw />
           Reset
         </Button>
       </div>

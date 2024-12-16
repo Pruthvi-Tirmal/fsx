@@ -9,12 +9,14 @@ interface NavbarWrapperProps {
   children: React.ReactNode;
   link: string;
   enableScroll?: boolean;
+  customClassName?: string;
 }
 
 const NavbarWrapper = ({
   children,
   link,
   enableScroll,
+  customClassName,
 }: NavbarWrapperProps) => {
   const [scrolled, setScrolled] = useState<boolean>(false);
   useEffect(() => {
@@ -35,7 +37,8 @@ const NavbarWrapper = ({
         " grid w-full bg-white/60 grid-cols-2 items-center md:grid-cols-3 required-padding py-2 border",
         {
           "border-b sticky top-0 z-10 border bg-white/95": scrolled,
-        }
+        },
+        customClassName
       )}>
       <Link href={link} className="flex items-center space-x-3">
         <Image width={45} height={45} src={logo} alt="fsx-logo" />

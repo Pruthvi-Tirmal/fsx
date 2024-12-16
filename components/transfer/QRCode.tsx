@@ -4,7 +4,7 @@ import Image from "next/image";
 import Field from "./Field";
 const QRCode = () => {
   return (
-    <div className="px-2 py-3 flex flex-col items-center space-y-4">
+    <div className="sm:px-2 py-3 flex  flex-col items-center space-y-4">
       <span className="p-2 rounded-lg border">
         <ScanQrCode className="w-8 h-8" />
       </span>
@@ -20,12 +20,12 @@ const QRCode = () => {
       </div>
       {/* password if chosen*/}
       <div className="inline-flex  relative items-center justify-center w-full">
-        <hr className="w-[70%] h-[2px] my-4 bg-gray-500 border-0 " />
-        <span className="absolute px-3 font-medium text-gray-800 -translate-x-1/2 bg-white left-1/2  ">
-          File is password protected 🔒
+        <hr className="w-full sm:w-[70%] h-[2px] my-4 bg-gray-500 border-0 " />
+        <span className="absolute px-3 text-nowrap  font-medium text-gray-800 -translate-x-1/2 bg-white left-1/2  ">
+          Files is password protected 🔒
         </span>
       </div>
-      <div className="w-[80%]">
+      <div className="w-full sm:w-[80%]">
         <Field value="1234567" isCopied />
       </div>
     </div>
