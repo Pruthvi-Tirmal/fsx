@@ -62,7 +62,7 @@ const FileUploader = () => {
           {/* TODO: overflow - y auto set */}
           <div className="">
             <aside className="flex items-center bg-white border justify-between w-full p-3 space-x-4 rounded-lg">
-              <div className="space-x-3 flex items-center">
+              <div className="space-x-3 overflow-hidden flex items-center">
                 <p className="p-2 uppercase font-bold text-lg rounded-lg bg-[#f8f8f8] border-2 text-gray-300">
                   {accept[0].name.split(".")[1]}
                 </p>
@@ -72,7 +72,7 @@ const FileUploader = () => {
               </div>
               <Trash2
                 onClick={() => setAccept([])}
-                className="w-6 h-6 text-gray-800 cursor-pointer"
+                className="w-6 shrink-0 h-6 text-gray-800 cursor-pointer"
               />
             </aside>
           </div>

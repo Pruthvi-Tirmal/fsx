@@ -11,7 +11,7 @@ const FileAndConfigContainer = () => {
   const [isGenerated, setIsGenerated] = useState(false);
   const form = useForm();
   return (
-    <main className="my-10 grid lg:grid-cols-2 grid-cols-1 gap-2 bg-white border p-2 rounded-lg min-h-[500px]">
+    <main className="my-10 grid lg:grid-cols-2 grid-cols-1 gap-2 bg-white p-2 rounded-lg shadow-sm border min-h-[500px] relative">
       {/* 1st screen to upload files */}
       {!isGenerated ? (
         <Form {...form}>
@@ -29,6 +29,15 @@ const FileAndConfigContainer = () => {
           </PreferencesPanel>
         </>
       )}
+      {/* report an issue */}
+      <span className="absolute  -bottom-10 right-3 p-2">
+        Having problems?
+        <a
+          href="mailto:support@example.com?subject=Report%20an%20Issue%20Regarding%20File%20Transfer"
+          className="text-sm ml-1 cursor-pointer underline-offset-4 decoration-dotted text-muted-foreground hover:underline sm:text-base">
+          Report an Issue
+        </a>
+      </span>
     </main>
   );
 };

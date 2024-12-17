@@ -22,31 +22,40 @@ interface FileConfigProps {
 const FileConfig = ({ form, setIsGenerated }: FileConfigProps) => {
   return (
     <main className="w-full">
-      {/* select transfer mode */}
-      <section className="space-y-6 pb-4  h-[500px] px-3 overflow-y-auto">
-        <div className="flex items-center w-full space-x-3">
-          <FormFieldWrapper
-            control={form.control}
-            formLabel="File Transfer"
-            formDescription="This are different file storage options"
-            formName="transferMode">
-            <Select defaultValue="P2P">
-              <SelectTrigger className="w-full">
-                <SelectValue placeholder="Theme" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="P2P">P2P</SelectItem>
-                <SelectItem value="permanent storage">
-                  permanent storage
-                </SelectItem>
-                <SelectItem value="temporary storage">
-                  temporary storage
-                </SelectItem>
-              </SelectContent>
-            </Select>
-          </FormFieldWrapper>
-        </div>
-        <div className="flex flex-wrap items-center gap-2">
+      <section className="space-y-6 pb-4 h-[500px] px-3 overflow-y-auto">
+        {/* Share Name */}
+        <FormFieldWrapper
+          control={form.control}
+          formLabel="Share Name"
+          formDescription="Give a Unique Name for your file sharing"
+          formName="transferMode"
+          isSwitch
+          switchLabel="Choose Randomly">
+          <Input placeholder="Share Name" type="text" />
+        </FormFieldWrapper>
+        {/* select transfer mode */}
+        <FormFieldWrapper
+          control={form.control}
+          formLabel="File Transfer"
+          formDescription="This are different file storage options"
+          formName="transferMode">
+          <Select defaultValue="P2P">
+            <SelectTrigger className="w-full">
+              <SelectValue placeholder="Theme" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="P2P">P2P</SelectItem>
+              <SelectItem value="permanent storage">
+                Permanent storage
+              </SelectItem>
+              <SelectItem value="temporary storage">
+                Temporary storage
+              </SelectItem>
+            </SelectContent>
+          </Select>
+        </FormFieldWrapper>
+
+        <div className="flex sm:flex-nowrap flex-wrap items-center gap-6 sm:gap-2">
           {/* file scheduler */}
           <FormFieldWrapper
             control={form.control}
@@ -68,12 +77,16 @@ const FileConfig = ({ form, setIsGenerated }: FileConfigProps) => {
             </div>
           </FormFieldWrapper>
         </div>
-        <div className="flex flex-wrap items-center gap-2">
-          <FormFieldWrapper control={form.control} formName="sendEmail">
-            <div className="flex space-x-2 items-center">
-              <Checkbox id="email" />
-              <Label htmlFor="email">do you want to send via email?</Label>
-            </div>
+        {/* email */}
+        <div className="space-y-4">
+          <FormFieldWrapper
+            formDescription="Send By Email Address"
+            control={form.control}
+            formLabel="Email"
+            formName="email"
+            isSwitch
+            switchLabel="want to send via email">
+            <Input type="email" placeholder="example@.com" />
           </FormFieldWrapper>
           <FormFieldWrapper control={form.control} formName="attachment">
             <div className="flex space-x-2 items-center">
@@ -84,18 +97,8 @@ const FileConfig = ({ form, setIsGenerated }: FileConfigProps) => {
             </div>
           </FormFieldWrapper>
         </div>
-        {/* email */}
-        <div className="space-y-4">
-          <FormFieldWrapper
-            formDescription="Send By Email Address"
-            control={form.control}
-            formLabel="Email"
-            formName="email">
-            <Input type="email" placeholder="example@.com" />
-          </FormFieldWrapper>
-        </div>
         {/* url expiry */}
-        <div className="flex flex-wrap gap-2 items-center">
+        <div className="flex sm:flex-nowrap flex-wrap gap-6 sm:gap-2 items-center">
           <FormFieldWrapper
             control={form.control}
             formName="urlLink"
@@ -115,10 +118,10 @@ const FileConfig = ({ form, setIsGenerated }: FileConfigProps) => {
             </div>
           </FormFieldWrapper>
         </div>
-        <div className="flex flex-wrap gap-2 items-center">
+        <div className="flex sm:flex-nowrap flex-wrap gap-4 sm:gap-2 items-center">
           {/* password protection */}
           <FormFieldWrapper
-            formDescription="protect file with password"
+            formDescription="Protect file with password"
             formName="passwordProtection"
             control={form.control}>
             <div className="flex space-x-2 items-center">

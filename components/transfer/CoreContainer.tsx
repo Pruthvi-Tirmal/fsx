@@ -9,25 +9,23 @@ const CoreContainer = ({ openSideBar, setOpenSideBar }: CoreContainerProps) => {
   return (
     <div
       className={cn(
-        " w-[calc(100%-250px)] px-1 sm:px-3 required-h-screen ml-auto mt-3",
+        "w-[calc(100%-250px)] px-1 sm:px-3 h-full ml-auto py-3 xs:overflow-y-auto",
         {
           "w-full": !openSideBar,
+          "overflow-hidden": openSideBar,
         }
       )}>
+      {/* back drop */}
+      {openSideBar && (
+        <div
+          onClick={() => setOpenSideBar(false)}
+          className="bg-slate-50/95 w-full top-0 left-0 xs:hidden z-10 absolute h-full overflow-hidden"></div>
+      )}
       <InfoStatusBar
         setOpenSideBar={setOpenSideBar}
         openSideBar={openSideBar}
       />
       <FileAndConfigContainer />
-      {/* report an issue */}
-      <span className="absolute  bottom-0 right-3 p-2">
-        Having problems?
-        <a
-          href="mailto:support@example.com?subject=Report%20an%20Issue%20Regarding%20File%20Transfer"
-          className="text-sm ml-1 cursor-pointer underline-offset-4 decoration-dotted text-muted-foreground hover:underline sm:text-base">
-          Report an Issue
-        </a>
-      </span>
     </div>
   );
 };

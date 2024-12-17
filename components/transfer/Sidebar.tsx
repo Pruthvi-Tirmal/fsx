@@ -19,15 +19,15 @@ const Sidebar = ({ openSideBar }: SidebarProps) => {
           ? { width: "250px", opacity: 1 }
           : { width: "0px", opacity: 0 }
       }
-      transition={{ duration: 0.3, ease: "easeOut" }}
-      className="border-r-2 whitespace-nowrap overflow-y-auto mt-0 absolute border-t px-2 py-3 bg-white bg-opacity-65 h-full top-0 left-0 z-10 ">
+      transition={{ duration: 0.3, ease: "linear" }}
+      className="border-r-2 whitespace-nowrap overflow-y-auto mt-0 absolute border-t px-2 py-3 bg-white bg-opacity-65 h-full top-0 left-0 z-20 ">
       <div className="flex items-center justify-between">
-        <h2 className="font-bold text-gray-800 text-2xl">File History</h2>
+        <h2 className="font-bold text-gray-800 text-2xl">Share History</h2>
       </div>
       <div className="w-full mt-5 h-[40px] flex justify-between items-center rounded-lg border-2 ">
         <input
           type="text"
-          className="h-full w-[90%] rounded-lg py-4 px-2 outline-none"
+          className="h-full w-[90%] bg-white rounded-lg py-4 px-2 outline-none"
         />
         <BiSearchAlt className="shrink-0 w-8 h-8 text-muted-foreground" />
       </div>

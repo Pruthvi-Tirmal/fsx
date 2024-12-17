@@ -22,7 +22,7 @@ const QRCode = () => {
       <div className="inline-flex  relative items-center justify-center w-full">
         <hr className="w-full sm:w-[70%] h-[2px] my-4 bg-gray-500 border-0 " />
         <span className="absolute px-3 text-nowrap  font-medium text-gray-800 -translate-x-1/2 bg-white left-1/2  ">
-          Files is password protected 🔒
+          Files are password protected 🔒
         </span>
       </div>
       <div className="w-full sm:w-[80%]">

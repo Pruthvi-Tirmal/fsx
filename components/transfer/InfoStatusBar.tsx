@@ -6,6 +6,7 @@ import DialogWrapper from "../wrapper/DialogWrapper";
 import Tips from "./Tips";
 import useDialogState from "@/states/DialogState";
 import { useState } from "react";
+import { cn } from "@/lib/utils";
 interface InfoStatusBarProps {
   setOpenSideBar: (open: boolean) => void;
   openSideBar: boolean;
@@ -15,17 +16,23 @@ const InfoStatusBar = ({ setOpenSideBar, openSideBar }: InfoStatusBarProps) => {
   const [ads, setAds] = useState(true);
   return (
     <div>
-      <div className="flex justify-between items-center mb-1">
+      <div className="flex relative justify-between items-center mb-1">
         <button
           onClick={() => setOpenSideBar(!openSideBar)}
-          className="transform scale-100 active:scale-90 transition-transform duration-75 ease-linear cursor-pointer">
+          className={cn(
+            "transform scale-100 active:scale-90 transition-transform duration-75 ease-linear fixed xs:static top-[75px] z-50 cursor-pointer",
+            { static: !openSideBar }
+          )}>
           <LuPanelLeft className="w-8 h-8 relative" />
           <span className="animate-ping absolute inline-flex h-[10px] w-[10px] top-0 right-0 rounded-full bg-gray-800"></span>
         </button>
         {/* Tips */}
         <button
           onClick={() => setOpen(true)}
-          className="cursor-pointer transform scale-100 active:scale-90 transition-transform duration-75 ease-linear">
+          className={cn(
+            "cursor-pointer transform scale-100 active:scale-90 transition-transform fixed top-[75px] right-[10px] xs:static duration-75 z-50 ease-linear",
+            { static: !openSideBar }
+          )}>
           <Lightbulb className="w-9 h-9 p-2 relative rounded-full bg-amber-400 text-white" />
           <span className="animate-ping absolute inline-flex h-[12px] w-[12px] top-0 right-0 rounded-full bg-yellow-500"></span>
         </button>
@@ -35,9 +42,10 @@ const InfoStatusBar = ({ setOpenSideBar, openSideBar }: InfoStatusBarProps) => {
       {ads && (
         <div className="relative border max-w-[850px] mx-auto p-2 shadow-sm bg-white text-gray-800 rounded-lg">
           <X
-            className="w-5 h-5 cursor-pointer z-10 absolute top-2 right-2"
+            className="w-5 h-5 cursor-pointer z-5 absolute top-2 right-2"
             onClick={() => setAds(false)}
           />
+
           <div className="flex items-center">
             <h1 className="md:text-2xl text-lg font-semibold w-[95%] flex gap-2 items-center">
               <Balancer>Unlock a World of Features – Sign Up Today!</Balancer>
