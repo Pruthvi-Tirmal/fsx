@@ -63,7 +63,7 @@ const Pricing = () => {
                 <p className="text-lg font-bold">{price.message}</p>
               )}
               {price.features.map((feature, index) => (
-                <Tooltip key={index}>
+                <Tooltip delayDuration={0} key={index}>
                   <TooltipTrigger className="cursor-help" asChild>
                     <li className="w-fit">
                       <Balancer>{feature.title}</Balancer>

@@ -19,6 +19,9 @@ interface FileConfigProps {
   setIsGenerated: (value: boolean) => void;
 }
 
+// *TODO we have think where we will add enum for transfer mode
+//? we have 3 mode : try, free, pro
+
 const FileConfig = ({ form, setIsGenerated }: FileConfigProps) => {
   return (
     <main className="w-full">
@@ -30,8 +33,9 @@ const FileConfig = ({ form, setIsGenerated }: FileConfigProps) => {
           formDescription="Give a Unique Name for your file sharing"
           formName="transferMode"
           isSwitch
+          mode="try"
           switchLabel="Choose Randomly">
-          <Input placeholder="Share Name" type="text" />
+          <Input placeholder="Share Name" disabled type="text" />
         </FormFieldWrapper>
         {/* select transfer mode */}
         <FormFieldWrapper
@@ -61,7 +65,8 @@ const FileConfig = ({ form, setIsGenerated }: FileConfigProps) => {
             control={form.control}
             formLabel="File Scheduler"
             formDescription="This file will wipe out after 30 mins"
-            formName="fileScheduler">
+            formName="fileScheduler"
+            mode="try">
             <div className="flex gap-2 items-center">
               <Input type="number" placeholder="30" disabled />
             </div>
@@ -71,7 +76,8 @@ const FileConfig = ({ form, setIsGenerated }: FileConfigProps) => {
             control={form.control}
             formLabel="QR code Expiry"
             formDescription="This file will wipe out after 30 mins"
-            formName="QRExpiry">
+            formName="QRExpiry"
+            mode="try">
             <div className="flex gap-2 items-center">
               <Input type="number" placeholder="30" disabled />
             </div>
@@ -85,10 +91,14 @@ const FileConfig = ({ form, setIsGenerated }: FileConfigProps) => {
             formLabel="Email"
             formName="email"
             isSwitch
-            switchLabel="want to send via email">
-            <Input type="email" placeholder="example@.com" />
+            mode="try"
+            switchLabel="Want to send via Email">
+            <Input type="email" disabled placeholder="example@.com" />
           </FormFieldWrapper>
-          <FormFieldWrapper control={form.control} formName="attachment">
+          <FormFieldWrapper
+            mode="try"
+            control={form.control}
+            formName="attachment">
             <div className="flex space-x-2 items-center">
               <Checkbox id="attachment" />
               <Label htmlFor="attachment">
@@ -102,6 +112,7 @@ const FileConfig = ({ form, setIsGenerated }: FileConfigProps) => {
           <FormFieldWrapper
             control={form.control}
             formName="urlLink"
+            mode="try"
             formDescription="This will generate a unique link for you">
             <div className="flex space-x-2 items-center">
               <Checkbox id="urlLink" />
@@ -110,6 +121,7 @@ const FileConfig = ({ form, setIsGenerated }: FileConfigProps) => {
           </FormFieldWrapper>
           <FormFieldWrapper
             control={form.control}
+            mode="try"
             formLabel="URL Expiry"
             formDescription="This file will wipe out after 30 mins"
             formName="urlExpiry">
@@ -123,6 +135,7 @@ const FileConfig = ({ form, setIsGenerated }: FileConfigProps) => {
           <FormFieldWrapper
             formDescription="Protect file with password"
             formName="passwordProtection"
+            mode="try"
             control={form.control}>
             <div className="flex space-x-2 items-center">
               <Checkbox id="passwordProtect" />
@@ -134,6 +147,7 @@ const FileConfig = ({ form, setIsGenerated }: FileConfigProps) => {
           {/* track analytics */}
           <FormFieldWrapper
             control={form.control}
+            mode="try"
             formName="trackAnalytics"
             formDescription="This will track your file analytics">
             <div className="flex space-x-2 items-center">

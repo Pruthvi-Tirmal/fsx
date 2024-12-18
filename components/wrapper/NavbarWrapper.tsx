@@ -34,9 +34,9 @@ const NavbarWrapper = ({
   return (
     <nav
       className={cn(
-        " grid w-full bg-white/60 grid-cols-2 items-center md:grid-cols-3 required-padding py-2 border",
+        "grid w-full bg-white/60 grid-cols-2 items-center md:grid-cols-3 required-padding py-2 border",
         {
-          "border-b sticky top-0 z-10 border bg-white/95": scrolled,
+          "border-b sticky top-0 left-0 z-10 border bg-white/95": scrolled,
         },
         customClassName
       )}>

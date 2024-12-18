@@ -19,20 +19,14 @@ const InfoStatusBar = ({ setOpenSideBar, openSideBar }: InfoStatusBarProps) => {
       <div className="flex relative justify-between items-center mb-1">
         <button
           onClick={() => setOpenSideBar(!openSideBar)}
-          className={cn(
-            "transform scale-100 active:scale-90 transition-transform duration-75 ease-linear fixed xs:static top-[75px] z-50 cursor-pointer",
-            { static: !openSideBar }
-          )}>
+          className="transform scale-100 active:scale-90 transition-transform duration-75 ease-linear  cursor-pointer">
           <LuPanelLeft className="w-8 h-8 relative" />
           <span className="animate-ping absolute inline-flex h-[10px] w-[10px] top-0 right-0 rounded-full bg-gray-800"></span>
         </button>
         {/* Tips */}
         <button
           onClick={() => setOpen(true)}
-          className={cn(
-            "cursor-pointer transform scale-100 active:scale-90 transition-transform fixed top-[75px] right-[10px] xs:static duration-75 z-50 ease-linear",
-            { static: !openSideBar }
-          )}>
+          className="cursor-pointer transform scale-100 active:scale-90 transition-transform  duration-75  ease-linear">
           <Lightbulb className="w-9 h-9 p-2 relative rounded-full bg-amber-400 text-white" />
           <span className="animate-ping absolute inline-flex h-[12px] w-[12px] top-0 right-0 rounded-full bg-yellow-500"></span>
         </button>

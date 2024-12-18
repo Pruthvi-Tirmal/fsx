@@ -35,7 +35,7 @@ const LandingNavbar = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.3, ease: "linear" }}
-          className="absolute md:hidden font-semibold text-gray-800 border-t flex top-[60px] flex-col bg-inherit text-lg w-full p-2">
+          className="absolute md:hidden font-semibold text-gray-800 border-t flex top-[60px] left-0 flex-col bg-inherit text-lg w-full p-2">
           <Link className="px-4 py-2 border-b" href={"#pricing"}>
             Pricing
           </Link>

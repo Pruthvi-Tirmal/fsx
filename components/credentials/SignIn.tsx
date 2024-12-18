@@ -1,7 +1,7 @@
 "use client";
 import logo from "@/public/images/logo.png";
 import { Button } from "../ui/button";
-import { BsApple, BsGoogle, BsGithub } from "react-icons/bs";
+import { BsGoogle, BsGithub } from "react-icons/bs";
 import Link from "next/link";
 import Image from "next/image";
 import {
@@ -16,6 +16,25 @@ import { signIn } from "next-auth/react";
 interface SignInProps {
   alertCode?: "callbackURL" | "error" | null;
 }
+
+// X (twitter) icon
+type XProps = {
+  size?: string;
+};
+
+const XIcon = ({ size }: XProps) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={size}
+    height={size}
+    viewBox="0 0 24 24">
+    <path
+      fill="currentColor"
+      d="M17.751 3h3.067l-6.7 7.625L22 21h-6.172l-4.833-6.293L5.464 21h-3.07l7.167-8.155L2 3h6.328l4.37 5.752zm-1.076 16.172h1.7L7.404 4.732H5.58z"
+    />
+  </svg>
+);
+
 const SignIn = ({ alertCode }: SignInProps) => {
   return (
     <>
@@ -30,10 +49,11 @@ const SignIn = ({ alertCode }: SignInProps) => {
       </DialogHeader>
       <div className="flex mt-6 w-full space-y-2 flex-col">
         <Button
+          onClick={() => signIn("twitter")}
           className="focus:ring-2 ring-gray-800"
           size={"lg"}
           variant={"secondary"}>
-          <BsApple /> Sign In with Apple
+          <XIcon /> Sign In with X
         </Button>
         <Button
           onClick={() => signIn("google")}

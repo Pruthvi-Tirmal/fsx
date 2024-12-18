@@ -9,9 +9,9 @@ const CoreContainer = ({ openSideBar, setOpenSideBar }: CoreContainerProps) => {
   return (
     <div
       className={cn(
-        "w-[calc(100%-250px)] px-1 sm:px-3 h-full ml-auto py-3 xs:overflow-y-auto",
+        "xs:w-[calc(100%-250px)] w-full px-1 sm:px-3 h-full ml-auto py-3 xs:overflow-y-auto",
         {
-          "w-full": !openSideBar,
+          "xs:w-full": !openSideBar,
           "overflow-hidden": openSideBar,
         }
       )}>
@@ -19,7 +19,7 @@ const CoreContainer = ({ openSideBar, setOpenSideBar }: CoreContainerProps) => {
       {openSideBar && (
         <div
           onClick={() => setOpenSideBar(false)}
-          className="bg-slate-50/95 w-full top-0 left-0 xs:hidden z-10 absolute h-full overflow-hidden"></div>
+          className="bg-slate-400/65 w-full top-0 left-0 xs:hidden z-10 absolute h-full overflow-hidden"></div>
       )}
       <InfoStatusBar
         setOpenSideBar={setOpenSideBar}

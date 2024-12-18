@@ -30,7 +30,7 @@ const DialogWrapper = ({
           if (openDialog) event.preventDefault();
         }}
         className={cn(
-          "flex flex-col items-center justify-center max-w-[350px] sm:max-w-[425px]",
+          "flex flex-col items-center justify-center max-w-[350px] xs:max-w-[425px]",
           customStyle
         )}>
         {children}

@@ -3,7 +3,7 @@ import FileUploader from "./FileUploader";
 import FileConfig from "./FileConfig";
 import { Form } from "@/components/ui/form";
 import { useForm } from "react-hook-form";
-import { Shapes, Pin } from "lucide-react";
+import { Shapes, Pin, Calendar } from "lucide-react";
 import QRCode from "./QRCode";
 import TransferInfo from "./TransferInfo";
 import { useState } from "react";
@@ -54,8 +54,15 @@ const PreferencesPanel = ({
 }: PreferencesPanelProps) => {
   return (
     <div className="sm:px-2 py-2 relative space-y-3 ">
-      <h1 className="text-2xl flex items-center space-x-2 font-semibold">
-        {isGenerated ? <Pin /> : <Shapes />} <span>{title}</span>{" "}
+      <h1 className="text-2xl flex items-center space-x-2 justify-between font-semibold">
+        <span className="flex items-center gap-2">
+          {isGenerated ? <Pin /> : <Shapes />} {title}
+        </span>{" "}
+        {isGenerated && (
+          <span className="text-base flex gap-2 items-center font-medium text-gray-500">
+            <Calendar className="w-5 h-5" /> 12/18/2024 12:00 AM
+          </span>
+        )}
       </h1>
       {children}
     </div>

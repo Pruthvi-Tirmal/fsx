@@ -1,12 +1,15 @@
 "use client";
 import { BiSearchAlt } from "react-icons/bi";
-import { LuFileClock, LuFile } from "react-icons/lu";
+import { LuFileClock, LuFile, LuPanelLeft } from "react-icons/lu";
 import { motion } from "motion/react";
+import { cn } from "@/lib/utils";
+import { set } from "react-hook-form";
 
 interface SidebarProps {
   openSideBar: boolean;
+  setOpenSideBar: (openSideBar: boolean) => void;
 }
-const Sidebar = ({ openSideBar }: SidebarProps) => {
+const Sidebar = ({ openSideBar, setOpenSideBar }: SidebarProps) => {
   return (
     <motion.div
       initial={
@@ -20,9 +23,15 @@ const Sidebar = ({ openSideBar }: SidebarProps) => {
           : { width: "0px", opacity: 0 }
       }
       transition={{ duration: 0.3, ease: "linear" }}
-      className="border-r-2 whitespace-nowrap overflow-y-auto mt-0 absolute border-t px-2 py-3 bg-white bg-opacity-65 h-full top-0 left-0 z-20 ">
+      className="border-r-2 whitespace-nowrap overflow-y-auto mt-0 absolute border-t px-2 py-3 bg-white  h-full top-0 left-0 z-20 ">
       <div className="flex items-center justify-between">
         <h2 className="font-bold text-gray-800 text-2xl">Share History</h2>
+        <button
+          onClick={() => setOpenSideBar(!openSideBar)}
+          className="transform xs:hidden scale-100 active:scale-90 transition-transform duration-75 ease-linear cursor-pointer">
+          <LuPanelLeft className="w-8 h-8 relative" />
+          <span className="animate-ping absolute inline-flex h-[10px] w-[10px] top-0 right-0 rounded-full bg-gray-800"></span>
+        </button>
       </div>
       <div className="w-full mt-5 h-[40px] flex justify-between items-center rounded-lg border-2 ">
         <input

@@ -11,7 +11,7 @@ const Panel = () => {
         background: "linear-gradient(229deg, rgba(250,250,250,8), transparent)",
       }}
       className="relative flex h-full w-full ">
-      <Sidebar openSideBar={openSideBar} />
+      <Sidebar setOpenSideBar={setOpenSideBar} openSideBar={openSideBar} />
       <CoreContainer
         openSideBar={openSideBar}
         setOpenSideBar={setOpenSideBar}

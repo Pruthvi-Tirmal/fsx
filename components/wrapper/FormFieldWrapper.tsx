@@ -8,6 +8,8 @@ import {
   FormMessage,
 } from "../ui/form";
 import { Switch } from "../ui/switch";
+import { cn } from "@/lib/utils";
+import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
 
 interface FormFieldWrapperProps {
   control: Control<FieldValues> | undefined;
@@ -17,6 +19,7 @@ interface FormFieldWrapperProps {
   formDescription?: string;
   isSwitch?: boolean;
   switchLabel?: string;
+  mode?: "try" | "free" | "pro";
 }
 
 const FormFieldWrapper = ({
@@ -27,6 +30,7 @@ const FormFieldWrapper = ({
   formDescription,
   isSwitch,
   switchLabel,
+  mode,
 }: FormFieldWrapperProps) => {
   return (
     <FormField
@@ -35,11 +39,14 @@ const FormFieldWrapper = ({
       render={() => (
         <FormItem className="w-full">
           <FormLabel className="flex items-center justify-between">
-            {formLabel}
+            <label className="space-x-2">
+              {formLabel && <span>{formLabel}</span>}
+              {mode && mode !== "pro" && <ModeInfo mode={mode} />}
+            </label>
             {isSwitch && (
               <span className="flex items-center space-x-4 mr-2">
                 <label htmlFor={switchLabel}>{switchLabel}</label>
-                <Switch id={switchLabel} />
+                <Switch disabled={mode !== "pro"} id={switchLabel} />
               </span>
             )}
           </FormLabel>
@@ -49,6 +56,28 @@ const FormFieldWrapper = ({
         </FormItem>
       )}
     />
+  );
+};
+
+const ModeInfo = ({ mode }: { mode: "try" | "free" | "pro" }) => {
+  return (
+    <Tooltip delayDuration={100}>
+      <TooltipTrigger>
+        <span
+          className={cn(
+            {
+              "bg-gray-200 text-gray-700": mode === "try",
+              "bg-yellow-400 text-gray-800": mode === "free",
+            },
+            "rounded-sm text-[10px] font-semibold w-fit px-2 py-1"
+          )}>
+          {mode === "try" ? "Lock" : "Pro"}
+        </span>
+      </TooltipTrigger>
+      <TooltipContent>
+        {mode === "try" ? "Sign In to Unlock" : "Unlock with Pro"}
+      </TooltipContent>
+    </Tooltip>
   );
 };
 
