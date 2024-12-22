@@ -14,17 +14,17 @@ import React from "react";
 
 interface HomePageProps {
   searchParams: Promise<{
-    callbackurl?: string;
+    callback?: string;
     error?: string;
   }>;
 }
 
 const HomePage = async ({ searchParams }: HomePageProps) => {
-  const { callbackurl } = await searchParams;
+  const { callback } = await searchParams;
   // OauthError
   const { error } = await searchParams;
   const alertStatus = () => {
-    if (!!callbackurl) {
+    if (!!callback) {
       return "callbackURL";
     } else if (!!error) {
       return "error";
@@ -44,7 +44,7 @@ const HomePage = async ({ searchParams }: HomePageProps) => {
       <FAQ />
       <TryForFreeBanner />
       {/* <Footer /> */}
-      <DialogWrapper openDialog={!!callbackurl || !!error}>
+      <DialogWrapper openDialog={!!callback || !!error}>
         <SignIn alertCode={alertStatus()} />
       </DialogWrapper>
     </>

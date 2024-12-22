@@ -3,6 +3,7 @@ import ImageComponent from "../common/ImageComponent";
 import logo from "@/public/images/logo.png";
 import { Button } from "../ui/button";
 import { Rocket } from "lucide-react";
+import Link from "next/link";
 const TryForFreeBanner = () => {
   return (
     <section className="relative py-4 mt-10 bg-[linear-gradient(white,transparent)] required-padding">
@@ -20,9 +21,11 @@ const TryForFreeBanner = () => {
             of fsX!
           </span>
         </p>
-        <Button size={"xl"} className="text-lg">
-          Try fsX Now
-          <Rocket />
+        <Button asChild size={"xl"} className="text-lg">
+          <Link href={"/try-on"}>
+            Try fsX Now
+            <Rocket />
+          </Link>
         </Button>
       </main>
     </section>

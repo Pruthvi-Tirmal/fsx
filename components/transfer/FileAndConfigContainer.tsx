@@ -3,22 +3,50 @@ import FileUploader from "./FileUploader";
 import FileConfig from "./FileConfig";
 import { Form } from "@/components/ui/form";
 import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { Shapes, Pin, Calendar } from "lucide-react";
 import QRCode from "./QRCode";
 import TransferInfo from "./TransferInfo";
 import { useState } from "react";
+import { FileTransferType, fileTransferSchema } from "@/schemas/fileTransfer";
+import { DevTool } from "@hookform/devtools";
+import useUserSession from "@/hooks/useUserSession";
 const FileAndConfigContainer = () => {
   const [isGenerated, setIsGenerated] = useState(false);
-  const form = useForm();
+  const user = useUserSession();
+  const form = useForm<FileTransferType>({
+    resolver: zodResolver(fileTransferSchema(user ? user.plan : "pro")),
+    mode: "onChange",
+    defaultValues: {
+      fileExpiry: "",
+      qrExpiry: "",
+      urlExpiry: "",
+      storageOptions: "p2p",
+      expiryOptions: "min",
+      emailTo: "",
+      isURLEnable: false,
+      isPasswordProtectEnable: false,
+      isEmailAttachmentEnable: false,
+      isFileTrackingEnable: false,
+    },
+  });
+  const onSubmit = (data: FileTransferType) => {
+    console.log(data);
+    setIsGenerated(true);
+  };
   return (
     <main className="my-10 grid lg:grid-cols-2 grid-cols-1 gap-2 bg-white p-2 rounded-lg shadow-sm border min-h-[500px] relative">
       {/* 1st screen to upload files */}
       {!isGenerated ? (
         <Form {...form}>
           <FileUploader />
-          <PreferencesPanel isGenerated={isGenerated} title="How to Share?">
-            <FileConfig form={form} setIsGenerated={setIsGenerated} />
-          </PreferencesPanel>
+          <form onSubmit={form.handleSubmit(onSubmit)} className="w-full">
+            <PreferencesPanel isGenerated={isGenerated} title="How to Share?">
+              <FileConfig form={form} plan={user ? user.plan : "pro"} />
+            </PreferencesPanel>
+          </form>
+          {/* for debugging */}
+          <DevTool control={form.control} />
         </Form>
       ) : (
         <>
@@ -54,7 +82,7 @@ const PreferencesPanel = ({
 }: PreferencesPanelProps) => {
   return (
     <div className="sm:px-2 py-2 relative space-y-3 ">
-      <h1 className="text-2xl flex items-center space-x-2 justify-between font-semibold">
+      <h1 className="text-2xl flex items-center flex-wrap gap-3 justify-between font-semibold">
         <span className="flex items-center gap-2">
           {isGenerated ? <Pin /> : <Shapes />} {title}
         </span>{" "}

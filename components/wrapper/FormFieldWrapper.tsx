@@ -1,4 +1,4 @@
-import { Control, FieldValues } from "react-hook-form";
+import { Control, ControllerRenderProps } from "react-hook-form";
 import {
   FormControl,
   FormDescription,
@@ -8,21 +8,26 @@ import {
   FormMessage,
 } from "../ui/form";
 import { Switch } from "../ui/switch";
-import { cn } from "@/lib/utils";
-import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
+import { FileTransferType } from "@/schemas/fileTransfer";
+import { PlanOptions } from "@/schemas/fileEnums";
+import PlanLabel from "../transfer/PlanLabel";
+import { checkLevel } from "@/lib/accessLevelInFields";
 
-interface FormFieldWrapperProps {
-  control: Control<FieldValues> | undefined;
-  children: React.ReactNode;
-  formName: string;
+interface FormFieldWrapperProps<T extends keyof FileTransferType> {
+  control: Control<FileTransferType> | undefined;
+  children: (
+    field: ControllerRenderProps<FileTransferType, T>
+  ) => React.ReactNode;
+  formName: T;
   formLabel?: string;
   formDescription?: string;
   isSwitch?: boolean;
   switchLabel?: string;
-  mode?: "try" | "free" | "pro";
+  plan?: PlanOptions;
+  switchFn?: (x: boolean) => void;
 }
 
-const FormFieldWrapper = ({
+const FormFieldWrapper = <T extends keyof FileTransferType>({
   control,
   children,
   formLabel,
@@ -30,54 +35,42 @@ const FormFieldWrapper = ({
   formDescription,
   isSwitch,
   switchLabel,
-  mode,
-}: FormFieldWrapperProps) => {
+  plan,
+  switchFn,
+}: FormFieldWrapperProps<T>) => {
+  let level: { attach: boolean; label: PlanOptions } | null = null;
+  if (plan) level = checkLevel(plan, formName);
   return (
     <FormField
       control={control}
       name={formName}
-      render={() => (
+      render={({ field }) => (
         <FormItem className="w-full">
           <FormLabel className="flex items-center justify-between">
             <label className="space-x-2">
               {formLabel && <span>{formLabel}</span>}
-              {mode && mode !== "pro" && <ModeInfo mode={mode} />}
+              {level && level.attach && (
+                <PlanLabel planToImpose={level.label} />
+              )}
             </label>
+            {/* switch is only for pro add we have one switch one so its fine to keep it as it is */}
             {isSwitch && (
-              <span className="flex items-center space-x-4 mr-2">
+              <span className="flex items-center [&>label]:hidden sm:[&>label]:flex space-x-4 mr-2">
                 <label htmlFor={switchLabel}>{switchLabel}</label>
-                <Switch disabled={mode !== "pro"} id={switchLabel} />
+                <Switch
+                  onCheckedChange={switchFn}
+                  disabled={plan !== "pro"}
+                  id={switchLabel}
+                />
               </span>
             )}
           </FormLabel>
-          <FormControl>{children}</FormControl>
+          <FormControl>{children(field)}</FormControl>
           <FormDescription>{formDescription}</FormDescription>
           <FormMessage />
         </FormItem>
       )}
     />
-  );
-};
-
-const ModeInfo = ({ mode }: { mode: "try" | "free" | "pro" }) => {
-  return (
-    <Tooltip delayDuration={100}>
-      <TooltipTrigger>
-        <span
-          className={cn(
-            {
-              "bg-gray-200 text-gray-700": mode === "try",
-              "bg-yellow-400 text-gray-800": mode === "free",
-            },
-            "rounded-sm text-[10px] font-semibold w-fit px-2 py-1"
-          )}>
-          {mode === "try" ? "Lock" : "Pro"}
-        </span>
-      </TooltipTrigger>
-      <TooltipContent>
-        {mode === "try" ? "Sign In to Unlock" : "Unlock with Pro"}
-      </TooltipContent>
-    </Tooltip>
   );
 };
 

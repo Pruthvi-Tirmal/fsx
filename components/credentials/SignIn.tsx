@@ -49,21 +49,21 @@ const SignIn = ({ alertCode }: SignInProps) => {
       </DialogHeader>
       <div className="flex mt-6 w-full space-y-2 flex-col">
         <Button
-          onClick={() => signIn("twitter")}
+          onClick={() => signIn("twitter", { redirectTo: "/transfer" })}
           className="focus:ring-2 ring-gray-800"
           size={"lg"}
           variant={"secondary"}>
           <XIcon /> Sign In with X
         </Button>
         <Button
-          onClick={() => signIn("google")}
+          onClick={() => signIn("google", { redirectTo: "/transfer" })}
           className="focus:ring-2 ring-gray-800"
           size={"lg"}
           variant={"secondary"}>
           <BsGoogle /> Sign In with Google
         </Button>
         <Button
-          onClick={() => signIn("github")}
+          onClick={() => signIn("github", { redirectTo: "/transfer" })}
           className="focus:ring-2 ring-gray-800"
           size={"lg"}
           variant={"secondary"}>

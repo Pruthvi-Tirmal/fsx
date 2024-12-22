@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { SessionProvider } from "next-auth/react";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -29,7 +30,9 @@ export default async function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-hero-pattern `}>
         <div className="mx-w-[1440px]">
-          <TooltipProvider>{children}</TooltipProvider>
+          <TooltipProvider>
+            <SessionProvider>{children}</SessionProvider>
+          </TooltipProvider>
         </div>
       </body>
     </html>

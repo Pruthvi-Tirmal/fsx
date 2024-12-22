@@ -3,6 +3,7 @@ import { Button } from "../ui/button";
 import ImageComponent from "../common/ImageComponent";
 import mockup from "@/public/images/mockup-content-hero.png";
 import Balancer from "react-wrap-balancer";
+import Link from "next/link";
 const PasswordFeature = () => {
   return (
     <section className="py-10  bg-[linear-gradient(45deg,white,#fafafa)] required-padding">
@@ -19,8 +20,8 @@ const PasswordFeature = () => {
               your needs.
             </Balancer>
           </p>
-          <Button size={"xl"} className="mx-auto text-base w-fit">
-            Transfer with Password Now!
+          <Button asChild size={"xl"} className="mx-auto text-base w-fit">
+            <Link href={"/transfer"}>Transfer with Password Now!</Link>
           </Button>
         </div>
         <div className="p-2 bg-gray-900 aspect-video rounded-xl">
